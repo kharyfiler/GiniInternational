@@ -13,7 +13,7 @@ db = client.get_database()
 # subprocess.check_output(["kaggle", "datasets", "download", "-d", "census/homeownership-rate-time-series-collection"])
 # subprocess.check_output(["unzip", "homeownership-rate-time-series-collection.zip", "-d", "HomeownershipRateTime"])
 #
-json_path = "/home/kfiler/PycharmProjects/CensusDataGetter/FlaskRESTServer/temp_json_holder.json"
+json_path = "C:\\Users\Khary\VSCodeProjects\CensusDataAPI\FlaskRESTServer\\temp_json_holder.json"
 #
 # directory_in_str = "/home/kfiler/PycharmProjects/CensusDataGetter/HomeownershipGet/HomeownershipRateTime"
 # directory = os.fsencode(directory_in_str)
@@ -35,14 +35,14 @@ json_path = "/home/kfiler/PycharmProjects/CensusDataGetter/FlaskRESTServer/temp_
 # subprocess.check_output(["rm", "homeownership-rate-time-series-collection.zip"])
 # subprocess.check_output(["rm", "-rf", "HomeownershipRateTime/"])
 
-csv_path = "/home/kfiler/PycharmProjects/CensusDataGetter/FlaskRESTServer/GiniInternationalData.csv"
+csv_path = "C:\\Users\Khary\VSCodeProjects\CensusDataAPI\FlaskRESTServer\GiniInternationalData.csv"
 
-with open(csv_path, "rU") as temp_csv:
+with open(csv_path, "r") as temp_csv:
     reader = csv.DictReader(temp_csv, delimiter=",")
     out = json.dumps([row for row in reader])
     with open(json_path, "w") as temp_json:
         temp_json.write(out)
         bson_bytes = bsonjs.loads(out)
         post = db.GiniInternational
-        post_id = post.insert_one(RawBSONDocument(bson_bytes)).insterted_id
+        post_id = post.insert_one(RawBSONDocument(bson_bytes)).inserted_id
 
