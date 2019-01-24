@@ -6,7 +6,7 @@ from sqlalchemy import create_engine
 from json import dumps
 from flask_jsonpify import jsonify
 
-db_connect = create_engine('sqlite:///GiniInternationalDataDB.db')  # original value is 'chinook.db'
+db_connect = create_engine('sqlite:///GiniInternationalDataDB.db')  # '.db' file is a relational database
 app = Flask(__name__)
 api = Api(app)
 
